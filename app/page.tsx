@@ -1,150 +1,355 @@
 'use client';
 
-export default function Home() {
+import { ReactNode } from 'react';
+
+// ============================================================================
+// PROJECT DATA - Centralized, maintainable, scalable
+// ============================================================================
+
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  accentColor: string;
+  emoji: string; // Placeholder until real images available
+  order: 'image-first' | 'text-first';
+}
+
+const projects: Project[] = [
+  {
+    id: 'sparktg',
+    title: 'SparkTG AI Chatbot & Dialer',
+    category: 'SaaS / WebRTC',
+    description:
+      'Embeddable SaaS widgets with real-time voice calling via WebRTC. Modular architecture and production-grade infrastructure supporting 1000+ concurrent users. Built with React, TypeScript, and custom WebRTC implementation.',
+    accentColor: 'var(--project-sparktg)',
+    emoji: '🤖',
+    order: 'image-first',
+  },
+  {
+    id: 'ellemora',
+    title: 'Ellemora Fashion Platform',
+    category: 'E-commerce / Next.js',
+    description:
+      'Full-featured e-commerce platform with Stripe payments, server-side rendering, PWA support, and Strapi CMS backend. Achieved 98 Lighthouse score with optimized images, lazy loading, and code splitting.',
+    accentColor: 'var(--project-ellemora)',
+    emoji: '👗',
+    order: 'text-first',
+  },
+  {
+    id: 'dashboard',
+    title: 'SparkTG Dashboard Redesign',
+    category: 'Analytics / Design',
+    description:
+      'Modern analytics dashboard using atomic design principles, ShadCN UI components, and Tailwind CSS. Achieved 25% UX improvement through simplified navigation, better data visualization, and refined micro-interactions.',
+    accentColor: 'var(--project-dashboard)',
+    emoji: '📊',
+    order: 'image-first',
+  },
+  {
+    id: 'alight',
+    title: 'Alight Solutions Dashboard',
+    category: 'FinTech / Enterprise',
+    description:
+      'Enterprise financial dashboard with WCAG AA accessibility compliance, 40% performance optimization, and multi-tenant support. Serves 500+ users with real-time data updates, advanced filtering, and role-based access control.',
+    accentColor: 'var(--project-alight)',
+    emoji: '💳',
+    order: 'text-first',
+  },
+  {
+    id: 'marketing',
+    title: 'SparkTG Marketing Website',
+    category: 'Marketing / SEO',
+    description:
+      'Modern marketing website with Next.js, responsive design, and full SEO optimization. Achieved 98+ Lighthouse scores across all metrics. Features smooth scroll animations, semantic HTML, and optimized Core Web Vitals.',
+    accentColor: 'var(--project-marketing)',
+    emoji: '💻',
+    order: 'image-first',
+  },
+  {
+    id: 'pocketnotes',
+    title: 'Pocket Notes App',
+    category: 'PWA / Offline-First',
+    description:
+      'Offline-first progressive web app with IndexedDB storage, Service Workers, push notifications, and cloud synchronization. Works seamlessly online and offline with automatic sync when connection returns.',
+    accentColor: 'var(--project-pocketnotes)',
+    emoji: '📝',
+    order: 'text-first',
+  },
+];
+
+// ============================================================================
+// COMPONENTS - Reusable, semantic, maintainable
+// ============================================================================
+
+interface SectionProps {
+  children: ReactNode;
+  className?: string;
+  id?: string;
+}
+
+function Section({ children, className = '', id }: SectionProps) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full backdrop-blur-sm bg-white/80 border-b border-gray-200 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="font-bold text-lg">Akshat Singh</div>
-          <div className="flex gap-6 text-sm">
-            <a href="#work" className="hover:text-blue-600">Work</a>
-            <a href="#about" className="hover:text-blue-600">About</a>
-            <a href="#contact" className="hover:text-blue-600">Contact</a>
-          </div>
+    <section id={id} className={`section ${className}`}>
+      {children}
+    </section>
+  );
+}
+
+interface ContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+
+function Container({ children, className = '' }: ContainerProps) {
+  return <div className={`container ${className}`}>{children}</div>;
+}
+
+interface HeadingProps {
+  level: 'h1' | 'h2' | 'h3';
+  eyebrow?: string;
+  children: ReactNode;
+  className?: string;
+}
+
+function Heading({ level: Level, eyebrow, children, className = '' }: HeadingProps) {
+  return (
+    <>
+      {eyebrow && <p className={`eyebrow mb-4 ${className}`}>{eyebrow}</p>}
+      <Level className={className}>{children}</Level>
+    </>
+  );
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+function ProjectCard({ project }: ProjectCardProps) {
+  const { title, category, description, accentColor, emoji } = project;
+
+  return (
+    <article className="card">
+      {/* Image Section */}
+      <div className="card-image">
+        <div
+          className="w-full h-full flex items-center justify-center text-6xl bg-gradient-to-br"
+          style={{
+            backgroundColor: 'var(--bg-sunken)',
+            backgroundImage: `radial-gradient(circle at 30% 30%, ${accentColor}15, transparent 50%)`,
+          }}
+        >
+          {emoji}
         </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="card-body">
+        <div className="card-kind" style={{ color: accentColor }}>
+          {category}
+        </div>
+        <h3 className="card-title">{title}</h3>
+        <p className="card-description flex-grow">{description}</p>
+      </div>
+    </article>
+  );
+}
+
+interface SkillsGridProps {
+  skills: string[];
+}
+
+function SkillsGrid({ skills }: SkillsGridProps) {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-var(--gap-card)">
+      {skills.map((skill) => (
+        <div
+          key={skill}
+          className="px-4 py-2 rounded-lg text-sm font-semibold text-center border border-var(--border-soft) transition-colors duration-base hover:border-var(--border-strong) hover:bg-var(--bg-sunken)"
+          style={{
+            borderColor: 'var(--border-soft)',
+            backgroundColor: 'transparent',
+            color: 'var(--text-primary)',
+          }}
+        >
+          {skill}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ============================================================================
+// MAIN PAGE
+// ============================================================================
+
+export default function Home() {
+  const skills = [
+    'React.js',
+    'Next.js',
+    'TypeScript',
+    'Tailwind CSS',
+    'Web Components',
+    'REST APIs',
+    'GraphQL',
+    'WebRTC',
+    'Performance',
+    'Accessibility',
+    'Node.js',
+    'PostgreSQL',
+  ];
+
+  return (
+    <div>
+      {/* Skip to main content */}
+      <a href="#main" className="skip-to-main">
+        Skip to main content
+      </a>
+
+      {/* ========================================================================
+          NAVIGATION
+          ======================================================================== */}
+      <nav className="fixed top-0 w-full z-50">
+        <Container className="flex items-center justify-between py-4">
+          <div className="font-semibold text-lg">Akshat Singh</div>
+          <ul className="flex gap-8 text-sm hide-mobile">
+            <li>
+              <a href="#work" className="hover:text-var(--accent-primary) transition-colors duration-base">
+                Work
+              </a>
+            </li>
+            <li>
+              <a href="#about" className="hover:text-var(--accent-primary) transition-colors duration-base">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="hover:text-var(--accent-primary) transition-colors duration-base">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </Container>
       </nav>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-sm font-bold text-blue-600 uppercase mb-4">Frontend Engineer</div>
-          <h1 className="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Building premium digital experiences with React and Next.js
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mb-8">
-            Specialized in high-performance, scalable applications. 3+ years crafting experiences for startups and enterprises.
-          </p>
-          <div className="flex gap-4">
-            <a href="#work" className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700">
-              View My Work
-            </a>
-            <a href="#contact" className="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50">
-              Get In Touch
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ========================================================================
+          HERO SECTION
+          ======================================================================== */}
+      <Section className="pt-32 sm:pt-40 md:pt-48 bg-gradient-to-b from-var(--bg-base) to-var(--bg-sunken)">
+        <Container className="container-narrow">
+          <div className="animate-fade-in-up">
+            <p className="eyebrow mb-6">Frontend Engineer</p>
+            <h1 className="display mb-8">Building premium digital experiences with React and Next.js</h1>
+            <p className="lede mb-12 max-w-2xl">
+              Specialized in high-performance, scalable applications. 3+ years crafting experiences for startups
+              and enterprises. Frontend expert with a product mindset.
+            </p>
 
-      {/* Work */}
-      <section id="work" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-sm font-bold text-blue-600 uppercase mb-4">Featured Work</div>
-          <h2 className="text-5xl font-bold mb-16">Selected Projects</h2>
-          
-          <div className="space-y-20">
-            {/* Project 1 */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="bg-gray-100 rounded-xl aspect-video flex items-center justify-center text-6xl">🤖</div>
-              <div>
-                <div className="text-xs font-bold text-blue-600 uppercase mb-2">SaaS / WebRTC</div>
-                <h3 className="text-3xl font-bold mb-3">SparkTG AI Chatbot & Dialer</h3>
-                <p className="text-gray-600 leading-relaxed">Embeddable SaaS widgets with real-time voice calling via WebRTC, modular architecture, and production-grade infrastructure supporting 1000+ concurrent users.</p>
-              </div>
-            </div>
-
-            {/* Project 2 */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="text-xs font-bold text-blue-600 uppercase mb-2">E-commerce / Next.js</div>
-                <h3 className="text-3xl font-bold mb-3">Ellemora Fashion Platform</h3>
-                <p className="text-gray-600 leading-relaxed">Full-featured e-commerce platform with Stripe payments, SSR, PWA support, and Strapi CMS backend. Achieved 98 Lighthouse score.</p>
-              </div>
-              <div className="bg-gray-100 rounded-xl aspect-video flex items-center justify-center text-6xl">👗</div>
-            </div>
-
-            {/* Project 3 */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="bg-gray-100 rounded-xl aspect-video flex items-center justify-center text-6xl">📊</div>
-              <div>
-                <div className="text-xs font-bold text-blue-600 uppercase mb-2">Dashboard / Design</div>
-                <h3 className="text-3xl font-bold mb-3">SparkTG Dashboard Redesign</h3>
-                <p className="text-gray-600 leading-relaxed">Modern analytics dashboard using atomic design principles, ShadCN UI components, and Tailwind CSS. Achieved 25% UX improvement.</p>
-              </div>
-            </div>
-
-            {/* Project 4 */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="text-xs font-bold text-blue-600 uppercase mb-2">FinTech / Enterprise</div>
-                <h3 className="text-3xl font-bold mb-3">Alight Solutions Dashboard</h3>
-                <p className="text-gray-600 leading-relaxed">Enterprise financial dashboard with WCAG AA accessibility compliance, 40% performance optimization, serving 500+ users.</p>
-              </div>
-              <div className="bg-gray-100 rounded-xl aspect-video flex items-center justify-center text-6xl">💳</div>
-            </div>
-
-            {/* Project 5 */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="bg-gray-100 rounded-xl aspect-video flex items-center justify-center text-6xl">💻</div>
-              <div>
-                <div className="text-xs font-bold text-blue-600 uppercase mb-2">Marketing / SEO</div>
-                <h3 className="text-3xl font-bold mb-3">SparkTG Marketing Website</h3>
-                <p className="text-gray-600 leading-relaxed">Modern marketing website with Next.js, responsive design, full SEO optimization. Achieved 98+ Lighthouse scores.</p>
-              </div>
-            </div>
-
-            {/* Project 6 */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="text-xs font-bold text-blue-600 uppercase mb-2">PWA / Offline-First</div>
-                <h3 className="text-3xl font-bold mb-3">Pocket Notes App</h3>
-                <p className="text-gray-600 leading-relaxed">Offline-first progressive web app with IndexedDB storage, Service Workers, push notifications, and cloud synchronization.</p>
-              </div>
-              <div className="bg-gray-100 rounded-xl aspect-video flex items-center justify-center text-6xl">📝</div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="#work" className="btn btn-primary">
+                View My Work
+              </a>
+              <a href="#contact" className="btn btn-secondary">
+                Get In Touch
+              </a>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* About */}
-      <section id="about" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-sm font-bold text-blue-600 uppercase mb-4">About</div>
-          <h2 className="text-5xl font-bold mb-8">Who I Am</h2>
-          
-          <div className="space-y-6 mb-10">
-            <p className="text-lg text-gray-700"><strong>Frontend Engineer</strong> with 3+ years building scalable, high-performance applications. Specialized in React.js, Next.js, TypeScript, and modern web architecture.</p>
-            <p className="text-lg text-gray-700"><strong>Track Record:</strong> 35%+ performance improvements on enterprise dashboards. 12+ production applications deployed. Consistent 98+ Lighthouse scores. WCAG AA accessibility compliance.</p>
-            <p className="text-lg text-gray-700"><strong>Currently:</strong> Building embeddable SaaS widgets at SparkTG with WebRTC real-time features supporting 1000+ concurrent users.</p>
-          </div>
+      {/* ========================================================================
+          WORK SECTION
+          ======================================================================== */}
+      <Section id="work">
+        <Container>
+          <Heading level="h1" eyebrow="Featured Work">
+            Selected Projects
+          </Heading>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Web Components', 'REST APIs', 'GraphQL', 'WebRTC', 'Performance', 'Accessibility', 'Node.js', 'PostgreSQL'].map(skill => (
-              <div key={skill} className="px-4 py-2 bg-blue-100 text-blue-600 rounded-lg text-sm font-semibold text-center">
-                {skill}
-              </div>
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-var(--gap-card)">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Contact */}
-      <section id="contact" className="py-20 px-6 bg-white text-center">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-sm font-bold text-blue-600 uppercase mb-4">Contact</div>
-          <h2 className="text-5xl font-bold mb-6">Let's Build Something Great</h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">Have an exciting project in mind? I'd love to hear about it.</p>
-          <a href="mailto:work.iamakshat@gmail.com" className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700">
+      {/* ========================================================================
+          ABOUT SECTION
+          ======================================================================== */}
+      <Section id="about" className="bg-var(--bg-sunken)">
+        <Container>
+          <Heading level="h1" eyebrow="About">
+            Who I Am
+          </Heading>
+
+          <div className="mt-12 space-y-6 max-w-3xl mb-12">
+            <p className="body-lg">
+              <strong>Frontend Engineer</strong> with 3+ years building scalable, high-performance applications.
+              Specialized in React.js, Next.js, TypeScript, and modern web architecture with a focus on User Experience
+              and Accessibility.
+            </p>
+
+            <p className="body-lg">
+              <strong>Track Record:</strong> 35%+ performance improvements on enterprise dashboards. 12+ production
+              applications deployed. Consistent 98+ Lighthouse scores. WCAG AA accessibility compliance. Mentored junior
+              developers and contributed to design system improvements.
+            </p>
+
+            <p className="body-lg">
+              <strong>Currently:</strong> Building embeddable SaaS widgets at SparkTG with WebRTC real-time features
+              supporting 1000+ concurrent users. Passionate about clean code, thoughtful UX, and shipping production-ready
+              solutions.
+            </p>
+          </div>
+
+          <div>
+            <p className="eyebrow mb-6">Core Skills</p>
+            <SkillsGrid skills={skills} />
+          </div>
+        </Container>
+      </Section>
+
+      {/* ========================================================================
+          CONTACT SECTION
+          ======================================================================== */}
+      <Section id="contact" className="text-center">
+        <Container className="container-narrow">
+          <Heading level="h1" eyebrow="Contact">
+            Let's Build Something Great
+          </Heading>
+
+          <p className="lede mt-8 mb-12">
+            Have an exciting project in mind? I'd love to hear about it. Reach out and let's create something
+            remarkable together.
+          </p>
+
+          <a href="mailto:work.iamakshat@gmail.com" className="btn btn-primary">
             Get In Touch
           </a>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 py-12 px-6 text-center text-gray-600">
-        <div className="max-w-6xl mx-auto">
-          <p>© 2026 Akshat Kumar Singh • <a href="https://github.com/Akshat53" className="text-blue-600 hover:underline">GitHub</a> • <a href="https://linkedin.com/in/akshat53" className="text-blue-600 hover:underline">LinkedIn</a></p>
-        </div>
+      {/* ========================================================================
+          FOOTER
+          ======================================================================== */}
+      <footer
+        className="border-t border-var(--border-soft) py-12 text-center text-var(--text-tertiary)"
+        style={{ borderColor: 'var(--border-soft)' }}
+      >
+        <Container>
+          <p className="caption">
+            © 2026 Akshat Kumar Singh •{' '}
+            <a href="https://github.com/Akshat53" className="text-var(--accent-primary) hover:underline">
+              GitHub
+            </a>{' '}
+            •{' '}
+            <a href="https://linkedin.com/in/akshat53" className="text-var(--accent-primary) hover:underline">
+              LinkedIn
+            </a>
+          </p>
+        </Container>
       </footer>
     </div>
   );
