@@ -229,18 +229,18 @@ export default function Home() {
         </Container>
       </nav>
 
-      <Section className="pt-32 sm:pt-40 md:pt-48 bg-gradient-to-b from-var(--bg-base) to-var(--bg-sunken)">
+      <Section className="hero bg-gradient-to-b from-var(--bg-base) to-var(--bg-sunken)">
         <Container className="container-narrow">
-          <div className="animate-fade-in-up">
-            <p className="eyebrow mb-6">Frontend Engineer</p>
-            <h1 className="display mb-8">Building high-performance, scalable applications</h1>
-            <p className="lede mb-12 max-w-2xl">
+          <div className="animate-fade-in-up text-center">
+            <p className="eyebrow mb-4">Frontend Engineer</p>
+            <h1 className="display mb-8 leading-tight">Building high-performance, scalable applications</h1>
+            <p className="lede mb-12">
               3+ years crafting production-grade frontends with React.js, Next.js, and Web Components. Specializing in
               SaaS product development, responsive design, and performance optimization. Currently building embeddable
               widgets at SparkTG.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#work" className="btn btn-primary">
                 View Projects
               </a>

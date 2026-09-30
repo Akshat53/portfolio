@@ -230,6 +230,17 @@ p,
   padding-block: var(--space-3xl);
 }
 
+/* Hero section - 100vh pixel perfect */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--gutter);
+  padding-bottom: var(--gutter);
+  position: relative;
+}
+
 /* ============================================================================
    COMPONENT STYLES
    ============================================================================ */
