@@ -17,13 +17,13 @@ export default function Resume() {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-      const imgWidth = 210; // A4 width in mm
+      const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
       let position = 0;
 
       pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= 297; // A4 height in mm
+      heightLeft -= 297;
 
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight;
@@ -39,252 +39,144 @@ export default function Resume() {
   };
 
   return (
-    <div className="min-h-screen bg-var(--bg-base) py-12">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Download Button */}
-        <div className="mb-8 flex gap-4">
-          <button
-            onClick={downloadPDF}
-            className="btn btn-primary"
-          >
-            ⬇️ Download Resume (PDF)
+    <div className="min-h-screen bg-var(--bg-base) py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Download Buttons */}
+        <div className="mb-6 flex gap-3">
+          <button onClick={downloadPDF} className="btn btn-primary text-sm">
+            ⬇️ Download PDF
           </button>
           <a
             href={`data:text/plain,${encodeURIComponent(generatePlainTextResume())}`}
             download="Akshat_Kumar_Singh_Resume.txt"
-            className="btn btn-secondary"
+            className="btn btn-secondary text-sm"
           >
-            📄 Plain Text (ATS Format)
+            📄 Text Export
           </a>
         </div>
 
-        {/* Resume Content */}
+        {/* Resume - Single Page */}
         <div
           ref={resumeRef}
-          className="bg-white text-black p-12 space-y-6"
+          className="bg-white text-black p-6 space-y-2"
           style={{
             fontFamily: 'Calibri, Arial, sans-serif',
-            fontSize: '11px',
-            lineHeight: '1.4',
+            fontSize: '10px',
+            lineHeight: '1.25',
           }}
         >
           {/* Header */}
-          <div className="border-b-2 border-gray-800 pb-4">
-            <h1 className="text-2xl font-bold text-gray-900">{resumeData.personal.name}</h1>
-            <p className="text-sm text-gray-700 font-semibold">{resumeData.personal.title}</p>
-            <div className="flex flex-wrap gap-3 text-xs text-gray-600 mt-2">
-              <span>📧 {resumeData.personal.email}</span>
-              <span>📱 {resumeData.personal.phone}</span>
-              <span>📍 {resumeData.personal.location}</span>
-              <span>
-                <a href={resumeData.personal.github} className="text-blue-600 hover:underline">
-                  GitHub
-                </a>
-              </span>
-              <span>
-                <a href={resumeData.personal.linkedin} className="text-blue-600 hover:underline">
-                  LinkedIn
-                </a>
-              </span>
+          <div className="border-b border-gray-800 pb-1.5">
+            <h1 className="text-base font-bold">{resumeData.personal.name}</h1>
+            <p className="text-xs font-semibold text-gray-700">{resumeData.personal.title}</p>
+            <div className="flex flex-wrap gap-1.5 text-xs text-gray-600">
+              <span>{resumeData.personal.email}</span>
+              <span>•</span>
+              <span>{resumeData.personal.phone}</span>
+              <span>•</span>
+              <span>{resumeData.personal.location}</span>
             </div>
           </div>
 
-          {/* Professional Summary */}
+          {/* Summary */}
           <div>
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Professional Summary</h2>
-            <p className="text-gray-700 leading-relaxed">{resumeData.summary}</p>
+            <h2 className="text-xs font-bold uppercase">Summary</h2>
+            <p className="text-xs text-gray-700 leading-tight">4+ years Frontend Engineer. Built WorkSyncX (React + Spring Boot). Expert in React.js, Next.js, TypeScript, real-time systems, and full-stack development.</p>
           </div>
 
           {/* Experience */}
           <div>
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Professional Experience</h2>
-            <div className="space-y-4">
-              {resumeData.experience.map((exp, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-bold text-gray-900">
-                        {exp.position} | {exp.company}
-                      </p>
-                      <p className="text-xs text-gray-600">{exp.description}</p>
-                    </div>
-                    <div className="text-right text-xs text-gray-600 whitespace-nowrap">
-                      <p>{exp.duration}</p>
-                      <p>{exp.location}</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside text-xs text-gray-700 mt-1 space-y-0.5">
-                    {exp.achievements.slice(0, 5).map((achievement, aidx) => (
-                      <li key={aidx}>{achievement}</li>
-                    ))}
-                    {exp.achievements.length > 5 && (
-                      <li>{exp.achievements.length - 5} more achievements...</li>
-                    )}
-                  </ul>
-                  <p className="text-xs text-gray-600 mt-1">
-                    <strong>Technologies:</strong> {exp.technologies.join(', ')}
-                  </p>
+            <h2 className="text-xs font-bold uppercase">Experience</h2>
+            {resumeData.experience.map((exp, idx) => (
+              <div key={idx} className="text-xs">
+                <div className="flex justify-between font-semibold">
+                  <span>{exp.position} • {exp.company}</span>
+                  <span>{exp.duration}</span>
                 </div>
-              ))}
-            </div>
+                <ul className="list-disc list-inside text-gray-700 space-y-0">
+                  {exp.achievements.slice(0, 2).map((a, i) => (
+                    <li key={i}>{a.substring(0, 90)}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
-          {/* Projects */}
+          {/* Featured Project */}
           <div>
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">Key Projects</h2>
-            <div className="space-y-3">
-              {resumeData.projects.map((proj, idx) => (
-                <div key={idx}>
-                  <p className="font-bold text-gray-900">
-                    {proj.name}
-                    {proj.link && (
-                      <a href={proj.link} className="text-blue-600 hover:underline ml-2">
-                        (Live)
-                      </a>
-                    )}
-                  </p>
-                  <p className="text-xs text-gray-700">{proj.description}</p>
-                  <p className="text-xs text-gray-600">
-                    <strong>Tech:</strong> {proj.technologies.join(', ')}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <h2 className="text-xs font-bold uppercase">Featured Project</h2>
+            {resumeData.projects[0] && (
+              <div className="text-xs">
+                <p className="font-semibold">{resumeData.projects[0].name}</p>
+                <p className="text-gray-700">{resumeData.projects[0].description.substring(0, 140)}...</p>
+                <p className="text-gray-600"><strong>Tech:</strong> {resumeData.projects[0].technologies.slice(0, 8).join(', ')}</p>
+              </div>
+            )}
           </div>
 
           {/* Skills */}
           <div>
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Technical Skills</h2>
-            <div className="space-y-1">
-              {Object.entries(resumeData.skills).map(([category, skills]) => (
-                <p key={category} className="text-xs text-gray-700">
-                  <strong>{category}:</strong> {skills.join(', ')}
-                </p>
-              ))}
-            </div>
+            <h2 className="text-xs font-bold uppercase">Skills</h2>
+            <p className="text-xs text-gray-700"><strong>Frontend:</strong> React.js, Next.js, TypeScript, Tailwind CSS</p>
+            <p className="text-xs text-gray-700"><strong>Full-stack:</strong> Java, Spring Boot, Node.js, PostgreSQL, REST APIs, WebSockets</p>
+            <p className="text-xs text-gray-700"><strong>Other:</strong> Git, Agile, WCAG AA, Design Systems</p>
           </div>
 
           {/* Education */}
           <div>
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Education</h2>
-            <div className="space-y-1">
-              {resumeData.education.map((edu, idx) => (
-                <p key={idx} className="text-xs text-gray-700">
-                  <strong>{edu.degree}</strong> • {edu.institution}, {edu.location} ({edu.year})
-                </p>
-              ))}
-            </div>
+            <h2 className="text-xs font-bold uppercase">Education</h2>
+            <p className="text-xs text-gray-700"><strong>MCA</strong> Jain University (2023-2025) • <strong>BCA</strong> Invertis University (2019-2022)</p>
           </div>
 
-          {/* Certifications */}
+          {/* Certs */}
           <div>
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Certifications</h2>
-            <div className="space-y-1">
-              {resumeData.certifications.map((cert, idx) => (
-                <p key={idx} className="text-xs text-gray-700">
-                  {cert.name} • {cert.issuer} ({cert.year})
-                </p>
-              ))}
-            </div>
+            <h2 className="text-xs font-bold uppercase">Certifications</h2>
+            <p className="text-xs text-gray-700">Microsoft Azure AZ-900 (2024) • PWA Google Fundamentals (2023)</p>
           </div>
 
-          {/* ATS Keywords (hidden but searchable) */}
-          <div className="text-xs text-gray-400 opacity-0 h-0 overflow-hidden">
-            {atsKeywords.hard_skills.join(' ')} {atsKeywords.soft_skills.join(' ')}{' '}
-            {atsKeywords.achievements.join(' ')} {atsKeywords.industries.join(' ')}
+          {/* ATS Keywords */}
+          <div className="text-xs opacity-0 h-0">
+            {atsKeywords.hard_skills.join(' ')} {atsKeywords.soft_skills.join(' ')}
           </div>
         </div>
 
         {/* Info */}
-        <div className="mt-8 p-4 bg-var(--bg-sunken) rounded-lg text-sm text-var(--text-secondary)">
-          <p>
-            ✓ <strong>ATS Optimized</strong> - Works with LinkedIn, Indeed, Google Cloud Talent, Workday, Greenhouse
-          </p>
-          <p>
-            ✓ <strong>Big Tech Friendly</strong> - Follows ATS standards used by Google, Meta, Amazon, Microsoft
-          </p>
-          <p>
-            ✓ <strong>Keyword Optimized</strong> - Includes hard skills, soft skills, and industry keywords for better matching
-          </p>
+        <div className="mt-6 p-3 bg-var(--bg-sunken) rounded text-xs text-var(--text-secondary)">
+          ✓ Single Page Resume • ✓ ATS Optimized • ✓ 4+ Years Experience • ✓ Featured: WorkSyncX
         </div>
       </div>
     </div>
   );
 }
 
-// Generate plain text version for ATS systems
 function generatePlainTextResume(): string {
-  let text = `
-${resumeData.personal.name}
+  return `${resumeData.personal.name}
 ${resumeData.personal.title}
+${resumeData.personal.email} | ${resumeData.personal.phone} | ${resumeData.personal.location}
 
-CONTACT INFORMATION
-Email: ${resumeData.personal.email}
-Phone: ${resumeData.personal.phone}
-Location: ${resumeData.personal.location}
-GitHub: ${resumeData.personal.github}
-LinkedIn: ${resumeData.personal.linkedin}
-Portfolio: ${resumeData.personal.portfolio}
+SUMMARY
+4+ years Frontend Engineer. Built WorkSyncX (React + Spring Boot). Expert in React.js, Next.js, TypeScript, real-time systems, full-stack development (React + Java Spring Boot).
 
-PROFESSIONAL SUMMARY
-${resumeData.summary}
+EXPERIENCE
+${resumeData.experience.map((exp) => `${exp.position} | ${exp.company} | ${exp.duration}
+${exp.achievements.slice(0, 2).map((a) => `• ${a}`).join('\n')}
+Tech: ${exp.technologies.slice(0, 7).join(', ')}`).join('\n\n')}
 
-PROFESSIONAL EXPERIENCE
-`;
+FEATURED PROJECT
+${resumeData.projects[0]?.name}
+${resumeData.projects[0]?.description}
+Tech: ${resumeData.projects[0]?.technologies.join(', ')}
 
-  resumeData.experience.forEach((exp) => {
-    text += `
-${exp.position}
-${exp.company} | ${exp.location} | ${exp.duration}
-${exp.description}
+SKILLS
+Frontend: React.js, Next.js, TypeScript, Tailwind CSS, Web Components
+Full-stack: Java, Spring Boot, Node.js, PostgreSQL, REST APIs, WebSockets
+Other: Git, Agile, WCAG AA, Design Systems, Performance Optimization
 
-${exp.achievements.map((a) => `• ${a}`).join('\n')}
-
-Technologies: ${exp.technologies.join(', ')}
-`;
-  });
-
-  text += `
-KEY PROJECTS
-`;
-
-  resumeData.projects.forEach((proj) => {
-    text += `
-${proj.name}
-${proj.description}
-Technologies: ${proj.technologies.join(', ')}
-`;
-  });
-
-  text += `
-TECHNICAL SKILLS
-`;
-
-  Object.entries(resumeData.skills).forEach(([category, skills]) => {
-    text += `
-${category}: ${skills.join(', ')}
-`;
-  });
-
-  text += `
 EDUCATION
-`;
+MCA - Jain University (2023-2025)
+BCA - Invertis University (2019-2022)
 
-  resumeData.education.forEach((edu) => {
-    text += `
-${edu.degree} - ${edu.institution}, ${edu.location} (${edu.year})
-`;
-  });
-
-  text += `
 CERTIFICATIONS
-`;
-
-  resumeData.certifications.forEach((cert) => {
-    text += `
-${cert.name} - ${cert.issuer} (${cert.year})
-`;
-  });
-
-  return text;
+Microsoft Azure Fundamentals (AZ-900) - 2024
+Progressive Web Apps (PWA) - Google - 2023`;
 }
