@@ -286,20 +286,20 @@ export default function Home() {
           <div className="about-content">
             <div className="about-text">
               <p>
-                I'm a <strong>Senior Frontend Engineer</strong> with 3+ years of production experience building
+                I'm a <strong>Frontend Engineer</strong> with 2.5+ years of production experience building
                 high-performance, scalable SaaS applications. I specialize in React.js, Next.js, and real-time systems
                 at <strong>SparkTG</strong>, an AI-powered cloud communication platform serving 500+ enterprise clients.
               </p>
 
               <p>
-                My expertise spans frontend architecture, performance optimization, accessibility standards, and design
-                systems. I'm passionate about building products that are both powerful and delightful to use.
+                My expertise spans frontend architecture, performance optimization, accessibility standards, design
+                systems, and full-stack development (React + Node.js + Java Spring Boot). I'm passionate about building products that are both powerful and delightful to use, and I actively use AI tools like Claude Code and Codex to accelerate development.
               </p>
 
               <p>
                 Currently focused on Portal v2 — a real-time contact center dashboard handling 2.4M+ concurrent
                 conversations with 99.9% uptime, serving enterprises like Zomato, Ola, Shiprocket, and Fortis
-                Healthcare.
+                Healthcare. Previously built the complete Ellemora e-commerce platform with SSR & PWA support.
               </p>
             </div>
 
@@ -310,15 +310,15 @@ export default function Home() {
               </div>
               <div className="skill-category">
                 <h4>State & Real-time</h4>
-                <p>Redux, WebSockets, WebRTC, Optimistic Updates, Sync</p>
+                <p>Redux, WebSockets, WebRTC, Optimistic Updates, Claude Code, Codex</p>
               </div>
               <div className="skill-category">
-                <h4>Performance</h4>
-                <p>Code Splitting, Memoization, Virtualization, Bundle Optimization</p>
+                <h4>Backend & Full-stack</h4>
+                <p>Node.js, Java, Spring Boot, PostgreSQL, REST APIs, Stripe</p>
               </div>
               <div className="skill-category">
                 <h4>Other</h4>
-                <p>Node.js, PostgreSQL, Stripe, Git, Agile, Accessible Design (WCAG AA)</p>
+                <p>Performance Optimization, Accessibility (WCAG AA), Design Systems, Git, Agile</p>
               </div>
             </div>
           </div>
