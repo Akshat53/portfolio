@@ -46,6 +46,56 @@ const projects: Project[] = [
     accentColor: 'var(--accent-primary)',
     isHero: true,
   },
+  {
+    id: 'sparktg-website',
+    title: 'SparkTG Website',
+    category: 'Marketing / Next.js',
+    description:
+      'Built complete sparktg.com marketing website with modern UI, responsive design, full SEO optimization, and 98+ Lighthouse score. Focused on showcasing platform capabilities with fast load times, smooth animations, and professional visual design.',
+    impact: ['98+ Lighthouse score', 'Full SEO optimization', 'Responsive design', '<1s load time'],
+    techStack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'SEO'],
+    accentColor: 'var(--project-marketing)',
+  },
+  {
+    id: 'sparkchat-widget',
+    title: 'SparkChat Widget',
+    category: 'SaaS / Web Components',
+    description:
+      'Developed embeddable SaaS chatbot widget integrated into 100+ client websites. Built with Web Components for cross-domain isolation, ensuring zero side effects on client code. Achieved <500ms latency and 99.9% uptime with AI-powered conversations and real-time messaging.',
+    impact: ['100+ client integrations', '<500ms latency', '99.9% uptime', 'AI conversations'],
+    techStack: ['React.js', 'Web Components', 'TypeScript', 'REST APIs', 'WebSockets'],
+    accentColor: 'var(--project-sparktg)',
+  },
+  {
+    id: 'calling-widget',
+    title: 'Calling Widget',
+    category: 'WebRTC / Real-time',
+    description:
+      'Built integrable voice calling widget used by Zomato Nugget, Eternal, and multiple enterprise clients. Implemented WebRTC integration for real-time voice calls with reliable connection handling, optimized latency, and multi-client support.',
+    impact: ['Production grade', 'Real-time voice', 'Multi-client', 'Enterprise ready'],
+    techStack: ['React.js', 'WebRTC', 'TypeScript', 'REST APIs', 'WebSockets'],
+    accentColor: 'var(--project-dashboard)',
+  },
+  {
+    id: 'ellemora',
+    title: 'Ellemora Fashion E-commerce',
+    category: 'Full-Stack / E-commerce',
+    description:
+      'Built full-featured fashion e-commerce platform with Stripe payments, Strapi CMS backend, and responsive UI. Implemented server-side rendering (SSR) and progressive web app (PWA) resulting in 40% SEO improvement and fast page loads.',
+    impact: ['40% SEO improvement', 'Full SSR + PWA', '98+ Lighthouse', 'Stripe integration'],
+    techStack: ['Next.js', 'React.js', 'Node.js', 'Strapi', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
+    accentColor: 'var(--project-ellemora)',
+  },
+  {
+    id: 'alight-fintech',
+    title: 'FinTech Dashboard — Alight Solutions',
+    category: 'Enterprise / FinTech',
+    description:
+      'Created reusable UI components and optimized data rendering for large datasets in enterprise financial tools. Improved UX by 25-30% through accessibility optimization (WCAG AA compliance) and performance tuning.',
+    impact: ['25-30% UX improvement', 'WCAG AA compliance', 'Large dataset handling'],
+    techStack: ['React.js', 'Bootstrap', 'REST APIs', 'Jenkins', 'Jira'],
+    accentColor: 'var(--project-alight)',
+  },
 ];
 
 // ============================================================================
