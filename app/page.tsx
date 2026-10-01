@@ -221,6 +221,11 @@ export default function Home() {
               </a>
             </li>
             <li>
+              <a href="/resume" className="hover:text-var(--accent-primary) transition-colors duration-base">
+                Resume
+              </a>
+            </li>
+            <li>
               <a href="#contact" className="hover:text-var(--accent-primary) transition-colors duration-base">
                 Contact
               </a>
