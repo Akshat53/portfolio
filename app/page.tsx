@@ -285,7 +285,7 @@ export default function Home() {
           <div className="about-content">
             <div className="about-text">
               <p>
-                I'm a <strong>Frontend Engineer</strong> with 3+ years of production experience building
+                I'm a <strong>Frontend Engineer</strong> with 4+ years of production experience building
                 high-performance, scalable applications. I specialize in React.js, Next.js, and full-stack development
                 at <strong>SparkTG</strong>, an AI-powered cloud communication platform.
               </p>

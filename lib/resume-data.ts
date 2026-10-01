@@ -14,7 +14,7 @@ export const resumeData = {
   },
 
   summary:
-    'Results-driven Frontend Engineer with 3+ years of production experience building high-performance, scalable applications. Expert in React.js, Next.js, TypeScript, Java Spring Boot, and real-time systems. Built WorkSyncX, a comprehensive team collaboration platform with full-stack architecture. Specialized in building complex UIs, real-time synchronization, accessible applications, and modern design systems.',
+    'Results-driven Frontend Engineer with 4+ years of production experience building high-performance, scalable applications. Expert in React.js, Next.js, TypeScript, Java Spring Boot, and real-time systems. Built WorkSyncX, a comprehensive team collaboration platform with full-stack architecture. Specialized in building complex UIs, real-time synchronization, accessible applications, and modern design systems.',
 
   experience: [
     {
