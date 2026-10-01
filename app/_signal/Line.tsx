@@ -67,6 +67,10 @@ export default function Line() {
             </li>
           ))}
         </ol>
+        <a href="/resume" className="s-resume-link">
+          <span className="s-mono">one page · PDF · plain text</span>
+          <b>Read the full résumé <span aria-hidden="true">→</span></b>
+        </a>
       </div>
     </section>
   );
