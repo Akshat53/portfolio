@@ -15,7 +15,7 @@ export default function Footer() {
         <span>© {new Date().getFullYear()} Akshat Kumar Singh · Noida, India</span>
         <a href="/resume">résumé (PDF)</a>
         <a href="#top">back to the top ↑</a>
-        <a className="s-made" href="https://anamaya.fyi" target="_blank" rel="noopener noreferrer">made by Anamaya</a>
+        <a className="s-made" href="https://github.com/Akshat53" target="_blank" rel="noopener noreferrer">made by Akshat</a>
       </div>
     </footer>
   );
