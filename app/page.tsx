@@ -20,82 +20,31 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 'portal-v2',
-    title: 'SparkTG Portal v2 Dashboard',
-    category: 'Enterprise / Real-time Systems',
+    id: 'worksyncx',
+    title: 'WorkSyncX - Team Collaboration & Sync Platform',
+    category: 'Full-Stack / Real-time Collaboration',
     description:
-      'Redesigned complete contact center dashboard for SparkTG serving 500+ enterprise clients handling 50M+ calls per month. Built real-time conversation management UI handling 2.4M+ concurrent conversations with optimistic updates, WebSocket sync, and intelligent caching. Implemented performance optimization achieving 35% improvement through code splitting, memoization, virtualization, and Redux optimization.',
+      'Built a comprehensive team collaboration platform enabling real-time task synchronization, team management, and communication. Implemented with React.js frontend and Spring Boot backend supporting concurrent users, real-time updates, and seamless data sync. Features include task assignments, team workflows, instant notifications, and collaborative features for distributed teams.',
     impact: [
-      '500+ enterprise clients',
-      '50M+ calls/month',
-      '2.4M+ concurrent conversations',
-      '35% performance improvement',
-      '25-30% UX improvement',
-      '99.9% uptime SLA',
+      'Full-stack platform for team collaboration',
+      'Real-time task synchronization',
+      'Multi-user concurrent support',
+      'Production-grade backend architecture',
+      'Comprehensive frontend UI with React',
     ],
     techStack: [
       'React.js',
-      'Redux',
+      'Next.js',
       'TypeScript',
+      'Java',
+      'Spring Boot',
+      'PostgreSQL',
+      'REST APIs',
       'WebSockets',
       'Tailwind CSS',
-      'Code Splitting',
-      'Memoization',
-      'Virtualization',
-      'Vercel',
     ],
     accentColor: 'var(--accent-primary)',
     isHero: true,
-  },
-  {
-    id: 'sparktg-website',
-    title: 'SparkTG Website',
-    category: 'Marketing / Next.js',
-    description:
-      'Built complete sparktg.com marketing website with modern UI, responsive design, full SEO optimization, and 98+ Lighthouse score. Focused on showcasing platform capabilities with fast load times, smooth animations, and professional visual design.',
-    impact: ['98+ Lighthouse score', 'Full SEO optimization', 'Responsive design', '<1s load time'],
-    techStack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'SEO'],
-    accentColor: 'var(--project-marketing)',
-  },
-  {
-    id: 'sparkchat-widget',
-    title: 'SparkChat Widget',
-    category: 'SaaS / Web Components',
-    description:
-      'Developed embeddable SaaS chatbot widget integrated into 100+ client websites. Built with Web Components for cross-domain isolation, ensuring zero side effects on client code. Achieved <500ms latency and 99.9% uptime with AI-powered conversations and real-time messaging.',
-    impact: ['100+ client integrations', '<500ms latency', '99.9% uptime', 'AI conversations'],
-    techStack: ['React.js', 'Web Components', 'TypeScript', 'REST APIs', 'WebSockets'],
-    accentColor: 'var(--project-sparktg)',
-  },
-  {
-    id: 'calling-widget',
-    title: 'Calling Widget',
-    category: 'WebRTC / Real-time',
-    description:
-      'Built integrable voice calling widget used by Zomato Nugget, Eternal, and multiple enterprise clients. Implemented WebRTC integration for real-time voice calls with reliable connection handling, optimized latency, and multi-client support.',
-    impact: ['Production grade', 'Real-time voice', 'Multi-client', 'Enterprise ready'],
-    techStack: ['React.js', 'WebRTC', 'TypeScript', 'REST APIs', 'WebSockets'],
-    accentColor: 'var(--project-dashboard)',
-  },
-  {
-    id: 'ellemora',
-    title: 'Ellemora Fashion E-commerce',
-    category: 'Full-Stack / E-commerce',
-    description:
-      'Built full-featured fashion e-commerce platform with Stripe payments, Strapi CMS backend, and responsive UI. Implemented server-side rendering (SSR) and progressive web app (PWA) resulting in 40% SEO improvement and fast page loads.',
-    impact: ['40% SEO improvement', 'Full SSR + PWA', '98+ Lighthouse', 'Stripe integration'],
-    techStack: ['Next.js', 'React.js', 'Node.js', 'Strapi', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
-    accentColor: 'var(--project-ellemora)',
-  },
-  {
-    id: 'alight-fintech',
-    title: 'FinTech Dashboard — Alight Solutions',
-    category: 'Enterprise / FinTech',
-    description:
-      'Created reusable UI components and optimized data rendering for large datasets in enterprise financial tools. Improved UX by 25-30% through accessibility optimization (WCAG AA compliance) and performance tuning.',
-    impact: ['25-30% UX improvement', 'WCAG AA compliance', 'Large dataset handling'],
-    techStack: ['React.js', 'Bootstrap', 'REST APIs', 'Jenkins', 'Jira'],
-    accentColor: 'var(--project-alight)',
   },
 ];
 
@@ -286,20 +235,19 @@ export default function Home() {
           <div className="about-content">
             <div className="about-text">
               <p>
-                I'm a <strong>Frontend Engineer</strong> with 2.5+ years of production experience building
-                high-performance, scalable SaaS applications. I specialize in React.js, Next.js, and real-time systems
-                at <strong>SparkTG</strong>, an AI-powered cloud communication platform serving 500+ enterprise clients.
+                I'm a <strong>Frontend Engineer</strong> with 3+ years of production experience building
+                high-performance, scalable applications. I specialize in React.js, Next.js, and full-stack development
+                at <strong>SparkTG</strong>, an AI-powered cloud communication platform.
               </p>
 
               <p>
-                My expertise spans frontend architecture, performance optimization, accessibility standards, design
-                systems, and full-stack development (React + Node.js + Java Spring Boot). I'm passionate about building products that are both powerful and delightful to use, and I actively use AI tools like Claude Code and Codex to accelerate development.
+                My expertise spans frontend architecture, real-time systems, performance optimization, accessibility standards, and design
+                systems. I'm passionate about building products that are both powerful and delightful to use. Built <strong>WorkSyncX</strong>, a comprehensive team collaboration platform with React frontend and Spring Boot backend.
               </p>
 
               <p>
-                Currently focused on Portal v2 — a real-time contact center dashboard handling 2.4M+ concurrent
-                conversations with 99.9% uptime, serving enterprises like Zomato, Ola, Shiprocket, and Fortis
-                Healthcare. Previously built the complete Ellemora e-commerce platform with SSR & PWA support.
+                Currently working at SparkTG on scalable SaaS features. Previously built Ellemora fashion e-commerce platform with SSR & PWA support,
+                and worked on enterprise FinTech dashboards at Wipro with full-stack capabilities (React + Spring Boot).
               </p>
             </div>
 
