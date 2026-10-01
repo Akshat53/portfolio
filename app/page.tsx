@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 
 // ============================================================================
 // PROJECT DATA - From Resume (100% Accurate)
+// Hero: Portal v2 Dashboard (Most Proud Of)
 // ============================================================================
 
 interface Project {
@@ -14,37 +15,76 @@ interface Project {
   impact: string[];
   techStack: string[];
   accentColor: string;
+  isHero?: boolean;
 }
 
 const projects: Project[] = [
   {
-    id: 'sparktg-widgets',
-    title: 'AI Chatbot & Dialer Widgets',
-    category: 'SaaS / WebRTC',
+    id: 'portal-v2',
+    title: 'SparkTG Portal v2 Dashboard',
+    category: 'Enterprise / Real-time Systems',
     description:
-      'Built embeddable SaaS widgets including AI chatbot with WebRTC voice calling and dialer widget for ticketing dashboards. Designed for reusability, modularity, and low-friction integration across multiple client platforms including Zomato\'s Nugget dashboard via Shiprocket integration.',
-    impact: ['Multi-platform integration', 'Modular architecture', 'WebRTC real-time voice calling'],
-    techStack: ['React.js', 'Web Components', 'WebRTC', 'Tailwind CSS', 'REST APIs', 'CI/CD'],
-    accentColor: 'var(--project-sparktg)',
+      'Redesigned complete contact center dashboard for SparkTG serving 500+ enterprise clients handling 50M+ calls per month. Built real-time conversation management UI handling 2.4M+ concurrent conversations with optimistic updates, WebSocket sync, and intelligent caching. Implemented performance optimization achieving 35% improvement through code splitting, memoization, virtualization, and Redux optimization.',
+    impact: [
+      '500+ enterprise clients',
+      '50M+ calls/month',
+      '2.4M+ concurrent conversations',
+      '35% performance improvement',
+      '25-30% UX improvement',
+      '99.9% uptime SLA',
+    ],
+    techStack: [
+      'React.js',
+      'Redux',
+      'TypeScript',
+      'WebSockets',
+      'Tailwind CSS',
+      'Code Splitting',
+      'Memoization',
+      'Virtualization',
+      'Vercel',
+    ],
+    accentColor: 'var(--accent-primary)',
+    isHero: true,
   },
   {
     id: 'sparktg-website',
-    title: 'SparkTG Client Website & Dashboard',
-    category: 'Next.js / Design System',
+    title: 'SparkTG Website',
+    category: 'Marketing / Next.js',
     description:
-      'Developed client-facing marketing website with modern UI, responsive design, and full SEO optimization. Leading ongoing effort to revamp the internal agent/admin dashboard UI using atomic design principles and modern design systems.',
-    impact: ['35% dashboard performance improvement', 'Full SEO optimization', 'Atomic design system'],
-    techStack: ['Next.js', 'React.js', 'Tailwind CSS', 'ShadCN UI', 'Vercel', 'Agile'],
+      'Built complete sparktg.com marketing website with modern UI, responsive design, full SEO optimization, and 98+ Lighthouse score. Focused on showcasing platform capabilities with fast load times, smooth animations, and professional visual design.',
+    impact: ['98+ Lighthouse score', 'Full SEO optimization', 'Responsive design', '<1s load time'],
+    techStack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'SEO'],
     accentColor: 'var(--project-marketing)',
   },
   {
+    id: 'sparkchat-widget',
+    title: 'SparkChat Widget',
+    category: 'SaaS / Web Components',
+    description:
+      'Developed embeddable SaaS chatbot widget integrated into 100+ client websites. Built with Web Components for cross-domain isolation, ensuring zero side effects on client code. Achieved <500ms latency and 99.9% uptime with AI-powered conversations and real-time messaging.',
+    impact: ['100+ client integrations', '<500ms latency', '99.9% uptime', 'AI conversations'],
+    techStack: ['React.js', 'Web Components', 'TypeScript', 'REST APIs', 'WebSockets'],
+    accentColor: 'var(--project-sparktg)',
+  },
+  {
+    id: 'calling-widget',
+    title: 'Calling Widget',
+    category: 'WebRTC / Real-time',
+    description:
+      'Built integrable voice calling widget used by Zomato Nugget, Eternal, and multiple enterprise clients. Implemented WebRTC integration for real-time voice calls with reliable connection handling, optimized latency, and multi-client support.',
+    impact: ['Production grade', 'Real-time voice', 'Multi-client', 'Enterprise ready'],
+    techStack: ['React.js', 'WebRTC', 'TypeScript', 'REST APIs', 'WebSockets'],
+    accentColor: 'var(--project-dashboard)',
+  },
+  {
     id: 'ellemora',
-    title: 'Ellemora Fashion E-commerce Platform',
+    title: 'Ellemora Fashion E-commerce',
     category: 'Full-Stack / E-commerce',
     description:
-      'Built full-featured fashion e-commerce platform with Stripe payments, Strapi CMS backend, and responsive UI. Implemented server-side rendering (SSR) and progressive web app (PWA) features resulting in 40% better SEO and page load speed.',
-    impact: ['40% SEO & page load improvement', 'Full SSR implementation', 'Offline PWA support', 'Stripe integration'],
-    techStack: ['Next.js', 'React.js', 'Node.js', 'Strapi', 'PostgreSQL', 'Stripe API', 'Tailwind CSS'],
+      'Built full-featured fashion e-commerce platform with Stripe payments, Strapi CMS backend, and responsive UI. Implemented server-side rendering (SSR) and progressive web app (PWA) resulting in 40% SEO improvement and fast page loads.',
+    impact: ['40% SEO improvement', 'Full SSR + PWA', '98+ Lighthouse', 'Stripe integration'],
+    techStack: ['Next.js', 'React.js', 'Node.js', 'Strapi', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
     accentColor: 'var(--project-ellemora)',
   },
   {
@@ -52,30 +92,10 @@ const projects: Project[] = [
     title: 'FinTech Dashboard — Alight Solutions',
     category: 'Enterprise / FinTech',
     description:
-      'Created reusable UI components and optimized data rendering for large datasets in enterprise financial tools. Improved accessibility and reduced user workflow times through thoughtful UX design and performance tuning.',
-    impact: ['25-30% UX improvement', 'Accessibility optimization', 'Large dataset handling', 'Workflow time reduction'],
-    techStack: ['React.js', 'Bootstrap', 'REST APIs', 'Jenkins', 'Jira', 'Agile'],
+      'Created reusable UI components and optimized data rendering for large datasets in enterprise financial tools. Improved UX by 25-30% through accessibility optimization (WCAG AA compliance) and performance tuning.',
+    impact: ['25-30% UX improvement', 'WCAG AA compliance', 'Large dataset handling'],
+    techStack: ['React.js', 'Bootstrap', 'REST APIs', 'Jenkins', 'Jira'],
     accentColor: 'var(--project-alight)',
-  },
-  {
-    id: 'sparktg-dashboard-revamp',
-    title: 'SparkTG Dashboard UI Revamp',
-    category: 'Design Systems / Performance',
-    description:
-      'Enhanced entire SparkTG dashboard UI applying modern design systems, accessibility standards, and performance best practices. Achieved 35% performance improvement through code splitting, memoization, and optimized rendering.',
-    impact: ['35% performance improvement', 'Modern design system', 'WCAG accessibility compliance', 'Code splitting optimization'],
-    techStack: ['React.js', 'Next.js', 'Tailwind CSS', 'Code Splitting', 'Memoization'],
-    accentColor: 'var(--project-dashboard)',
-  },
-  {
-    id: 'pocket-notes',
-    title: 'Pocket Notes PWA',
-    category: 'PWA / Personal Project',
-    description:
-      'Built offline-first progressive web app for note-taking with local storage persistence and push notifications. Demonstrates expertise in Service Workers, Cache API, and IndexedDB for seamless offline functionality.',
-    impact: ['Offline-first functionality', 'Push notifications', 'Local storage persistence'],
-    techStack: ['React.js', 'IndexedDB', 'Cache API', 'Service Workers', 'PWA'],
-    accentColor: 'var(--project-pocketnotes)',
   },
 ];
 
@@ -107,18 +127,17 @@ function Container({ children, className = '' }: ContainerProps) {
 }
 
 interface HeadingProps {
-  level: 'h1' | 'h2' | 'h3';
-  eyebrow?: string;
+  level: 1 | 2 | 3;
   children: ReactNode;
   className?: string;
 }
 
-function Heading({ level: Level, eyebrow, children, className = '' }: HeadingProps) {
+function Heading({ level, children, className = '' }: HeadingProps) {
+  const Tag = `h${level}` as const;
   return (
-    <>
-      {eyebrow && <p className={`eyebrow mb-4 ${className}`}>{eyebrow}</p>}
-      <Level className={className}>{children}</Level>
-    </>
+    <Tag className={`heading heading-${level} ${className}`}>
+      {children}
+    </Tag>
   );
 }
 
@@ -127,88 +146,60 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project }: ProjectCardProps) {
-  const { title, category, description, impact, techStack, accentColor } = project;
-
   return (
-    <article className="card">
-      <div className="card-body">
-        <div className="card-kind" style={{ color: accentColor }}>
-          {category}
-        </div>
-        <h3 className="card-title">{title}</h3>
-        <p className="card-description">{description}</p>
+    <div
+      className={`project-card ${project.isHero ? 'project-card-hero' : ''}`}
+      style={{ '--accent': project.accentColor } as React.CSSProperties}
+    >
+      <div className="project-card-header">
+        <span className="project-category">{project.category}</span>
+      </div>
 
-        <div className="mt-4 pt-4 border-t" style={{ borderColor: 'var(--border-soft)' }}>
-          <p className="eyebrow mb-2">Impact</p>
-          <ul className="space-y-1">
-            {impact.map((point) => (
-              <li key={point} className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                • {point}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <Heading level={3} className="project-title">
+        {project.title}
+      </Heading>
 
-        <div className="mt-4 pt-4 border-t" style={{ borderColor: 'var(--border-soft)' }}>
-          <p className="eyebrow mb-2">Tech Stack</p>
-          <div className="flex flex-wrap gap-1">
-            {techStack.map((tech) => (
-              <span
-                key={tech}
-                className="text-xs px-2 py-1 rounded border"
-                style={{
-                  backgroundColor: accentColor + '15',
-                  color: accentColor,
-                  borderColor: accentColor,
-                }}
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+      <p className="project-description">{project.description}</p>
+
+      <div className="project-section">
+        <h4 className="project-section-title">Impact</h4>
+        <ul className="project-impact">
+          {project.impact.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="project-section">
+        <h4 className="project-section-title">Tech Stack</h4>
+        <div className="tech-stack">
+          {project.techStack.map((tech, idx) => (
+            <span key={idx} className="tech-badge">
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
-    </article>
+    </div>
   );
 }
-
-// ============================================================================
-// SKILLS
-// ============================================================================
-
-const skillCategories = [
-  {
-    category: 'Frontend',
-    skills: ['React.js', 'Next.js', 'Web Components', 'TypeScript', 'Tailwind CSS', 'ShadCN UI'],
-  },
-  {
-    category: 'Backend & APIs',
-    skills: ['Node.js', 'Express.js', 'REST APIs', 'GraphQL', 'Java (Spring Boot)'],
-  },
-  {
-    category: 'Specializations',
-    skills: ['PWA', 'WebRTC', 'SEO', 'Accessibility (WCAG)', 'Micro Frontends', 'Code Splitting'],
-  },
-  {
-    category: 'Tools & Practices',
-    skills: ['Git', 'GitHub', 'CI/CD', 'Jenkins', 'Docker', 'Agile', 'Jira'],
-  },
-];
 
 // ============================================================================
 // PAGE
 // ============================================================================
 
 export default function Home() {
-  return (
-    <div>
-      <a href="#main" className="skip-to-main">
-        Skip to main content
-      </a>
+  const heroProject = projects.find((p) => p.isHero);
+  const otherProjects = projects.filter((p) => !p.isHero);
 
-      <nav className="fixed top-0 w-full z-50">
-        <Container className="flex items-center justify-between py-4">
-          <div className="font-semibold text-lg">Akshat Kumar Singh</div>
+  return (
+    <div className="page">
+      {/* Navigation */}
+      <nav className="nav">
+        <Container className="nav-content">
+          <a href="/" className="nav-logo">
+            Akshat Kumar Singh
+          </a>
           <ul className="flex gap-8 text-sm hide-mobile">
             <li>
               <a href="#work" className="hover:text-var(--accent-primary) transition-colors duration-base">
@@ -234,141 +225,148 @@ export default function Home() {
         </Container>
       </nav>
 
-      <Section className="hero bg-gradient-to-b from-var(--bg-base) to-var(--bg-sunken)">
-        <Container className="container-narrow">
-          <div className="animate-fade-in-up text-center">
-            <p className="eyebrow mb-4">Frontend Engineer</p>
-            <h1 className="display mb-8 leading-tight">Building high-performance, scalable applications</h1>
-            <p className="lede mb-12">
-              3+ years crafting production-grade frontends with React.js, Next.js, and Web Components. Specializing in
-              SaaS product development, responsive design, and performance optimization. Currently building embeddable
-              widgets at SparkTG.
-            </p>
+      {/* Hero Section - Portal v2 */}
+      <Section id="hero" className="hero-section">
+        <Container>
+          {heroProject && (
+            <div className="hero-content">
+              <div className="hero-text">
+                <span className="hero-tag">Featured Project</span>
+                <Heading level={1} className="hero-title">
+                  {heroProject.title}
+                </Heading>
+                <p className="hero-subtitle">{heroProject.description}</p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#work" className="btn btn-primary">
-                View Projects
-              </a>
-              <a href="#contact" className="btn btn-secondary">
-                Get In Touch
-              </a>
+                <div className="hero-stats">
+                  {heroProject.impact.slice(0, 3).map((stat, idx) => (
+                    <div key={idx} className="stat">
+                      <div className="stat-value">{stat}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="hero-tech">
+                  <h4 className="project-section-title">Built With</h4>
+                  <div className="tech-stack">
+                    {heroProject.techStack.slice(0, 5).map((tech, idx) => (
+                      <span key={idx} className="tech-badge">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </Container>
       </Section>
 
-      <Section id="work">
+      {/* Projects Grid */}
+      <Section id="work" className="projects-section">
         <Container>
-          <Heading level="h1" eyebrow="Featured Work">
-            Projects & Impact
+          <Heading level={2} className="section-title">
+            Other Projects
           </Heading>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-var(--gap-card)">
-            {projects.map((project) => (
+          <div className="projects-grid">
+            {otherProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </Container>
       </Section>
 
-      <Section id="skills" className="bg-var(--bg-sunken)">
+      {/* About Section */}
+      <Section id="about" className="about-section">
         <Container>
-          <Heading level="h1" eyebrow="Technical Skills">
-            Expertise & Stack
+          <Heading level={2} className="section-title">
+            About
           </Heading>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-            {skillCategories.map((category) => (
-              <div key={category.category}>
-                <h3 className="h3 mb-4">{category.category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 rounded-lg text-sm font-medium border hover:border-var(--border-strong) transition-colors duration-base"
-                      style={{
-                        borderColor: 'var(--border-soft)',
-                        color: 'var(--text-primary)',
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+          <div className="about-content">
+            <div className="about-text">
+              <p>
+                I'm a <strong>Senior Frontend Engineer</strong> with 3+ years of production experience building
+                high-performance, scalable SaaS applications. I specialize in React.js, Next.js, and real-time systems
+                at <strong>SparkTG</strong>, an AI-powered cloud communication platform serving 500+ enterprise clients.
+              </p>
+
+              <p>
+                My expertise spans frontend architecture, performance optimization, accessibility standards, and design
+                systems. I'm passionate about building products that are both powerful and delightful to use.
+              </p>
+
+              <p>
+                Currently focused on Portal v2 — a real-time contact center dashboard handling 2.4M+ concurrent
+                conversations with 99.9% uptime, serving enterprises like Zomato, Ola, Shiprocket, and Fortis
+                Healthcare.
+              </p>
+            </div>
+
+            <div className="skills-grid">
+              <div className="skill-category">
+                <h4>Frontend</h4>
+                <p>React.js, Next.js, TypeScript, Tailwind CSS, Web Components</p>
               </div>
-            ))}
+              <div className="skill-category">
+                <h4>State & Real-time</h4>
+                <p>Redux, WebSockets, WebRTC, Optimistic Updates, Sync</p>
+              </div>
+              <div className="skill-category">
+                <h4>Performance</h4>
+                <p>Code Splitting, Memoization, Virtualization, Bundle Optimization</p>
+              </div>
+              <div className="skill-category">
+                <h4>Other</h4>
+                <p>Node.js, PostgreSQL, Stripe, Git, Agile, Accessible Design (WCAG AA)</p>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
 
-      <Section id="about">
+      {/* Contact Section */}
+      <Section id="contact" className="contact-section">
         <Container>
-          <Heading level="h1" eyebrow="About">
-            Who I Am
+          <Heading level={2} className="section-title">
+            Get In Touch
           </Heading>
 
-          <div className="mt-12 space-y-6 max-w-3xl">
-            <p className="body-lg">
-              I'm a results-driven <strong>Frontend Engineer</strong> with 3+ years of hands-on experience building
-              high-performance, scalable applications. My expertise spans React.js, Next.js, and Web Components, with a
-              proven track record of improving UI responsiveness and application performance by 30%+.
-            </p>
+          <div className="contact-content">
+            <p>I'm always interested in connecting with fellow engineers and exploring new opportunities.</p>
 
-            <p className="body-lg">
-              <strong>Current Focus:</strong> At SparkTG, I'm developing embeddable SaaS widgets including an AI chatbot
-              with WebRTC voice calling, integrated into client platforms like Zomato's Nugget dashboard. I'm also
-              leading the dashboard UI revamp using modern design systems and accessibility best practices.
-            </p>
-
-            <p className="body-lg">
-              <strong>Track Record:</strong> Built full-stack e-commerce platforms with Stripe integration and 40% SEO
-              improvements. Optimized enterprise FinTech dashboards for 25-30% better UX. Architected modular,
-              reusable components for production-grade applications. Comfortable with Agile delivery, CI/CD pipelines,
-              and cross-browser compatibility.
-            </p>
-
-            <p className="body-lg">
-              <strong>Education:</strong> Master of Computer Application (Jain University, 2025) • Bachelor of Computer
-              Application (Invertis University, 2022). Certified in Microsoft Azure Fundamentals (AZ-900) and Google PWA
-              Fundamentals.
-            </p>
+            <div className="contact-links">
+              <a
+                href="mailto:work.iamakshat@gmail.com"
+                className="contact-link"
+              >
+                Email
+              </a>
+              <a
+                href="https://github.com/Akshat53"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-link"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/akshat53"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-link"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
         </Container>
       </Section>
 
-      <Section id="contact" className="text-center bg-var(--bg-sunken)">
-        <Container className="container-narrow">
-          <Heading level="h1" eyebrow="Contact">
-            Let's Work Together
-          </Heading>
-
-          <p className="lede mt-8 mb-12">
-            Have an exciting project or opportunity? I'd love to hear from you. Reach out via email or connect on
-            LinkedIn/GitHub.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:work.iamakshat@gmail.com" className="btn btn-primary">
-              Email Me
-            </a>
-            <a href="https://linkedin.com/in/akshat53" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-            <a href="https://github.com/Akshat53" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          </div>
-        </Container>
-      </Section>
-
-      <footer
-        className="border-t border-var(--border-soft) py-12 text-center text-var(--text-tertiary)"
-        style={{ borderColor: 'var(--border-soft)' }}
-      >
+      {/* Footer */}
+      <footer className="footer">
         <Container>
-          <p className="caption">
-            © 2026 Akshat Kumar Singh • work.iamakshat@gmail.com • +91-9634780846 • India
-          </p>
+          <p>© 2026 Akshat Kumar Singh. Built with React & Next.js.</p>
         </Container>
       </footer>
     </div>
